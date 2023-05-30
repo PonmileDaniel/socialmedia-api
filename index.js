@@ -16,20 +16,19 @@ const path = require("path")
 dotenv.config();
 
 app.use(cors({
-    origin: "https://purplelove.onrender.com" 
+    origin: ["http://localhost:3000", "https://purplelove.onrender.com" ]
 }))
 
 
 //How to connect to Mongodb
-mongoose.connect( process.env.MONGO_URL , { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Db Connection Successful"))
+  .catch((err) => {
+    console.log(err);
+  });
 
 const db = mongoose.connection;
 
-mongoose.connect(process.env.MONGO_URL)
-.then(() => console.log("Db Connection Succesful"))
-.catch((err) => {
-    console.log(err)
-});
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
