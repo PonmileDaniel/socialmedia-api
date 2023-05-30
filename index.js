@@ -22,12 +22,12 @@ app.use(cors({
 
 //How to connect to Mongodb
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("Db Connection Successful"))
-  .catch((err) => {
-    console.log(err);
-  });
-
 const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function(){
+    console.log("connected")
+});
+
 
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
