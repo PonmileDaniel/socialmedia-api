@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
-const userRoute = require("../api/routes/users");
-const authRoute = require("../api/routes/auth");
-const postRoute = require("../api/routes/post");
+const userRoute = require("./routes/users");
+const authRoute = require("./routes/auth");
+const postRoute = require("./routes/post");
 const cors = require("cors")
 
 //To upload Multiple Files
