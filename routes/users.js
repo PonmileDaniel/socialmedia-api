@@ -2,6 +2,8 @@ const User = require("../models/User");
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 
+
+
 //Update user 
 router.put("/:id", async (req, res) => {
  //Checking if the user is the Admin
@@ -125,6 +127,21 @@ router.put("/:id/follow", async (req, res) => {
   }else{
     res.status(403).json("You cannot follow Yourself")
   }
+})
+
+//Searching for User
+router.get("/search/:username", async (req,res) => {
+const query = req.params.username;
+
+try{
+  const users = await User.findOne({
+    username: query });
+ 
+  res.status(200).json(users);
+}catch(err){
+  console.log(err)
+}
+
 })
 //unfollow a user
 

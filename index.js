@@ -63,6 +63,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/post", postRoute);
 
 
+
 //How to run Backend Server
 // app.listen(3030, () =>{
 //     console.log("Backend Server is Running");
